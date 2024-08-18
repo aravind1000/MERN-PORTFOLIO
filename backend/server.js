@@ -1,25 +1,22 @@
 const express = require('express');
-const path = require('path');
 const app = express();
 require("dotenv").config();
 const dbConfig = require("./config/dbConfig");
-const cors = require('cors');
 const portfolioRoute = require('./routes/portfolioRoute');
 
-app.use(cors(
-    {
-        origin: ["https://deploy-mern-1whq.vercel.app"],
-        methods: ["POST", "GET"],
-        credentials: true
-    }
-));
-
+// JSON parsing middleware
 app.use(express.json());
 
+// API routes
 app.use('/api/portfolio', portfolioRoute);
 
-const port = 5000;
+// Serve the root route
+app.get('/', (req, res) => {
+    res.send('Backend API is running...');
+});
 
+// Start the server
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
