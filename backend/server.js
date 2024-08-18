@@ -1,8 +1,16 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 require("dotenv").config();
 const dbConfig = require("./config/dbConfig");
 const portfolioRoute = require('./routes/portfolioRoute');
+
+// Enable CORS for your frontend domain
+app.use(cors({
+    origin: 'https://aravind-tech-wizard.onrender.com',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+}));
 
 // JSON parsing middleware
 app.use(express.json());
