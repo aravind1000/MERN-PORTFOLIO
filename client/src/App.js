@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import axios from "axios";
 import Home from './pages/Home';
 import Admin from 'Admin';
-import Login from 'Admin/Login';
+import Login from 'Admin/Login.js';
 import { useEffect } from 'react';
 import Loader from './components/Loader';
 import { useDispatch, useSelector } from 'react-redux';
