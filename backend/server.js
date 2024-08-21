@@ -15,18 +15,21 @@ app.get('/', (req, res) => {
     res.send('Backend API is running...');
 });
 
-// Start the server
+// Define the port
 const port = process.env.PORT || 5000;
 
-const path = require('path');
-
+// Serve static files from the React app in production
 if (process.env.NODE_ENV === "production") {
+    const path = require('path');
     app.use(express.static(path.join(__dirname, 'client/build')));
+
+    // Handle React routing, return all requests to React app
     app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+        res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
     });
 }
 
+// Start the server
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
