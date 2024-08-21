@@ -17,12 +17,12 @@ function AdminProjects() {
             dispatch(ShowLoading());
             let response;
             if (selectedItemForEdit) {
-                response = await axios.put("/api/portfolio/update-project", {
+                response = await axios.put("https://mern-portfolio-api-hazel.vercel.app/api/portfolio/update-project", {
                     ...values,
                     _id: selectedItemForEdit._id,
                 });
             } else {
-                response = await axios.post("/api/portfolio/add-project", values);
+                response = await axios.post("https://mern-portfolio-api-hazel.vercel.app/api/portfolio/add-project", values);
             }
             dispatch(HideLoading());
             if (response.data.success) {

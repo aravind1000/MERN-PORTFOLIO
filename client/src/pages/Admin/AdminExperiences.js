@@ -17,12 +17,12 @@ function AdminExperiences() {
             dispatch(ShowLoading());
             let response;
             if (selectedItemForEdit) {
-                response = await axios.put("/api/portfolio/update-experience", {
+                response = await axios.put("https://mern-portfolio-api-hazel.vercel.app/api/portfolio/update-experience", {
                     ...values,
                     _id: selectedItemForEdit._id,
                 });
             } else {
-                response = await axios.post("/api/portfolio/add-experience", values);
+                response = await axios.post("https://mern-portfolio-api-hazel.vercel.app/api/portfolio/add-experience", values);
             }
             dispatch(HideLoading());
             if (response.data.success) {
