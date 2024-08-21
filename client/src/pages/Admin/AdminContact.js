@@ -1,19 +1,19 @@
 import React from 'react';
 import { Form, Input, message } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { ShowLoading, HideLoading } from './redux/rootSlice';
+import { ShowLoading, HideLoading } from '../../redux/rootSlice';
 import axios from 'axios';
 
-function AdminIntro() {
+function AdminContact() {
     const dispatch = useDispatch();
     const { portfolioData } = useSelector((state) => state.root);
 
     const onFinish = async (values) => {
         try {
             dispatch(ShowLoading());
-            const response = await axios.post("/api/portfolio/update-intro", {
+            const response = await axios.post("/api/portfolio/update-contact", {
                 ...values,
-                _id: portfolioData.intro._id,
+                _id: portfolioData.contact._id,
             });
             dispatch(HideLoading());
             if (response.data.success) {
@@ -32,25 +32,25 @@ function AdminIntro() {
             <Form
                 onFinish={onFinish}
                 layout='vertical'
-                initialValues={portfolioData.intro}
+                initialValues={portfolioData.contact}
             >
-                <Form.Item name='welcomeText' label='Welcome Text'>
-                    <Input placeholder='Welcome Text' />
+                <Form.Item name='name' label='Name'>
+                    <Input placeholder='Name' />
                 </Form.Item>
-                <Form.Item name='firstName' label='First Name'>
-                    <Input placeholder='First Name' />
+                <Form.Item name='gender' label='Gender'>
+                    <Input placeholder='Gender' />
                 </Form.Item>
-                <Form.Item name='lastName' label='Last Name'>
-                    <Input placeholder='Last Name' />
+                <Form.Item name='email' label='E-mail'>
+                    <Input placeholder='E-mail' />
                 </Form.Item>
-                <Form.Item name='caption' label='Caption'>
-                    <Input placeholder='Caption' />
+                <Form.Item name='mobile' label='Mobile'>
+                    <Input placeholder='Mobile' />
                 </Form.Item>
-                <Form.Item name='description' label='Description'>
-                    <Input.TextArea placeholder='Description' />
+                <Form.Item name='age' label='Age'>
+                    <Input placeholder='Age' />
                 </Form.Item>
-                <Form.Item name='resume' label='Resume'>
-                    <Input placeholder='Resume link' />
+                <Form.Item name='address' label='Address'>
+                    <Input placeholder='Address' />
                 </Form.Item>
                 <div className='flex justify-end w-full'>
                     <button className='px-10 py-2 bg-secondary text-white' type='submit'>
@@ -62,4 +62,4 @@ function AdminIntro() {
     )
 }
 
-export default AdminIntro;
+export default AdminContact;

@@ -1,13 +1,13 @@
 import { Form, Input, message, Modal } from 'antd';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { HideLoading, ReloadData, ShowLoading } from './redux/rootSlice';
+import { HideLoading, ReloadData, ShowLoading } from '../../redux/rootSlice';
 import axios from 'axios';
 
-function AdminExperiences() {
+function AdminProjects() {
     const dispatch = useDispatch();
     const { portfolioData } = useSelector((state) => state.root);
-    const { experiences } = portfolioData;
+    const { projects } = portfolioData;
     const [showAddEditModal, setShowAddEditModal] = React.useState(false);
     const [selectedItemForEdit, setSelectedItemForEdit] = React.useState(null);
     const [type, setType] = React.useState("add");
@@ -17,12 +17,12 @@ function AdminExperiences() {
             dispatch(ShowLoading());
             let response;
             if (selectedItemForEdit) {
-                response = await axios.put("/api/portfolio/update-experience", {
+                response = await axios.put("/api/portfolio/update-project", {
                     ...values,
                     _id: selectedItemForEdit._id,
                 });
             } else {
-                response = await axios.post("/api/portfolio/add-experience", values);
+                response = await axios.post("/api/portfolio/add-project", values);
             }
             dispatch(HideLoading());
             if (response.data.success) {
@@ -42,7 +42,7 @@ function AdminExperiences() {
     const onDelete = async (item) => {
         try {
             dispatch(ShowLoading());
-            const response = await axios.post("/api/portfolio/delete-experience", {
+            const response = await axios.post("/api/portfolio/delete-project", {
                 _id: item._id,
             });
             dispatch(HideLoading());
@@ -69,21 +69,20 @@ function AdminExperiences() {
                         setType("add");
                     }}
                 >
-                    Add Experience
+                    Add Project
                 </button>
             </div>
             <div className="grid grid-cols-4 gap-5 mt-5">
-                {experiences.map((experience) => (
-                    <div key={experience._id} className='shadow border p-5 border-gray-400 flex flex-col'>
-                        <h1 className='text-primary text-xl font-bold'>{experience.period}</h1>
-                        <h1>Company: {experience.company}</h1>
-                        <h1>Role: {experience.title}</h1>
-                        <h1>Description: {experience.description}</h1>
+                {projects.map((project) => (
+                    <div key={project._id} className='shadow border p-5 border-gray-400 flex flex-col'>
+                        <h1 className='text-primary text-xl font-bold'>{project.title}</h1>
+                        <h1>Description : {project.description}</h1>
+                        <h1>Technologies: {project.technologies.join(', ')}</h1>
                         <div className='flex justify-end gap-5 mt-5'>
                             <button
                                 className='bg-red-500 text-white px-5 py-2'
                                 onClick={() => {
-                                    onDelete(experience);
+                                    onDelete(project);
                                 }}
                             >
                                 Delete
@@ -91,7 +90,7 @@ function AdminExperiences() {
                             <button
                                 className='bg-secondary text-white px-5 py-2'
                                 onClick={() => {
-                                    setSelectedItemForEdit(experience);
+                                    setSelectedItemForEdit(project);
                                     setShowAddEditModal(true);
                                     setType("edit");
                                 }}
@@ -106,7 +105,7 @@ function AdminExperiences() {
             {(type === "add" || selectedItemForEdit) && (
                 <Modal
                     open={showAddEditModal}
-                    title={selectedItemForEdit ? "Edit Experience" : "Add Experience"}
+                    title={selectedItemForEdit ? "Edit Project" : "Add Project"}
                     footer={null}
                     onCancel={() => {
                         setShowAddEditModal(false);
@@ -119,25 +118,32 @@ function AdminExperiences() {
                         initialValues={selectedItemForEdit || {}}
                     >
                         <Form.Item
-                            name="period"
-                            label="Period"
-                            rules={[{ required: true, message: 'Please enter the period' }]}
-                        >
-                            <Input placeholder="Period" />
-                        </Form.Item>
-                        <Form.Item
-                            name="company"
-                            label="Company"
-                            rules={[{ required: true, message: 'Please enter the company name' }]}
-                        >
-                            <Input placeholder="Company" />
-                        </Form.Item>
-                        <Form.Item
                             name="title"
                             label="Title"
-                            rules={[{ required: true, message: 'Please enter the job title' }]}
+                            rules={[{ required: true, message: 'Please enter the title' }]}
                         >
                             <Input placeholder="Title" />
+                        </Form.Item>
+                        <Form.Item
+                            name="image"
+                            label="Image URL"
+                            rules={[{ required: true, message: 'Please enter the image URL' }]}
+                        >
+                            <Input placeholder="Image URL" />
+                        </Form.Item>
+                        <Form.Item
+                            name="link"
+                            label="GitHub Link"
+                            rules={[{ required: true, message: 'Please enter the GitHub link' }]}
+                        >
+                            <Input placeholder="GitHub Link" />
+                        </Form.Item>
+                        <Form.Item
+                            name="technologies"
+                            label="Technologies"
+                            rules={[{ required: true, message: 'Please enter the technologies used' }]}
+                        >
+                            <Input placeholder="Technologies (comma separated)" />
                         </Form.Item>
                         <Form.Item
                             name="description"
@@ -172,4 +178,4 @@ function AdminExperiences() {
     );
 }
 
-export default AdminExperiences;
+export default AdminProjects;

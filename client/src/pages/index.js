@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
-import Header from '../client/src/components/Header'
+import Header from './components/Header'
 import { Tabs } from 'antd';
-import AdminIntro from './AdminIntro';
-import AdminAbout from './AdminAbout';
-import Experience from './AdminExperiences';
-import Project from './AdminProjects';
-import Contact from './AdminContact';
+import AdminIntro from './Admin/AdminIntro';
+import AdminAbout from './Admin/AdminAbout';
+import Experience from './Admin/AdminExperiences';
+import Project from './Admin/AdminProjects';
+import Contact from './Admin/AdminContact';
 import { useSelector } from 'react-redux';
 
 
