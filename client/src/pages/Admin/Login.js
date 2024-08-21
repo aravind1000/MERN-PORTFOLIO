@@ -1,7 +1,7 @@
 import { message } from 'antd';
 import axios from 'axios'
 import React from 'react'
-import { HideLoading, ShowLoading } from '../client/src/redux/rootSlice';
+import { HideLoading, ShowLoading } from '../../redux/rootSlice';
 import { useDispatch } from 'react-redux';
 
 function Login() {

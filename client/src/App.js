@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import axios from "axios";
 import Home from './pages/Home';
-import Admin from 'Admin';
-import Login from 'Admin/Login.js';
+import Admin from './pages/Admin';
+import Login from './pages/Admin/Login';
 import { useEffect } from 'react';
 import Loader from './components/Loader';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,7 +15,7 @@ function App() {
   const getPortfolioData = async () => {
     try {
       dispatch(ShowLoading());
-      const response = await axios.get("https://aravind-tech.onrender.com/api/portfolio/get-portfolio-data");
+      const response = await axios.get("/api/portfolio/get-portfolio-data");
       dispatch(SetPortfolioData(response.data));
       dispatch(ReloadData(false));
       dispatch(HideLoading());

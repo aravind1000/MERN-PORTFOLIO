@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Input, message } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { ShowLoading, HideLoading } from '../client/src/redux/rootSlice';
+import { ShowLoading, HideLoading } from '../../redux/rootSlice';
 import axios from 'axios';
 
 function AdminIntro() {
