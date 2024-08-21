@@ -2,7 +2,17 @@ const express = require('express');
 const app = express();
 require("dotenv").config();
 const dbConfig = require("./config/dbConfig");
+const cors = require('cors');
 const portfolioRoute = require('./routes/portfolioRoute');
+
+// Control allow origin
+app.use(cors(
+    {
+        origin: ["https://aravindtech-aravind1000s-projects.vercel.app"],
+        methods: ["POST", "GET"],
+        credentials: true
+    }
+));
 
 // JSON parsing middleware
 app.use(express.json());
