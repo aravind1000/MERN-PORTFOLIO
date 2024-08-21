@@ -25,7 +25,7 @@ function Contact() {
         setLoading(true);
         setSuccess(null);
         try {
-            const response = await axios.post("/api/portfolio/submit-contact", formData, {
+            const response = await axios.post("https://mern-portfolio-api-hazel.vercel.app/api/portfolio/submit-contact", formData, {
                 headers: {
                     'Content-Type': 'application/json',
                 }
