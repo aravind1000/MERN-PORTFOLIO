@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import axios from "axios";
 import Home from './pages/Home';
-import Admin from './pages/Admin';
-import Login from './pages/Admin/Login';
+import Admin from '../../Admin';
+import Login from '../../Admin/Login';
 import { useEffect, useState } from 'react';
 import Loader from './components/Loader';
 import { useDispatch, useSelector } from 'react-redux';
