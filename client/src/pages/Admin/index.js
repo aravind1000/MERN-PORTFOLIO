@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Header from './components/Header'
+import Header from '../../components/Header'
 import { Tabs } from 'antd';
 import AdminIntro from './AdminIntro';
 import AdminAbout from './AdminAbout';
