@@ -8,7 +8,7 @@ const portfolioRoute = require('./routes/portfolioRoute');
 // Control allow origin
 app.use(cors(
     {
-        origin: ["https://aravindtech-aravind1000s-projects.vercel.app"],
+        origin: ["https://aravind-tech-wizard.onrender.com"],
         methods: ["POST", "GET"],
         credentials: true
     }
