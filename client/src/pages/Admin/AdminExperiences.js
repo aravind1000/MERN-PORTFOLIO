@@ -17,12 +17,12 @@ function AdminExperiences() {
             dispatch(ShowLoading());
             let response;
             if (selectedItemForEdit) {
-                response = await axios.put("http://localhost:5000/api/portfolio/update-experience", {
+                response = await axios.put("https://mern-portfolio-api-hazel.vercel.app/api/portfolio/update-experience", {
                     ...values,
                     _id: selectedItemForEdit._id,
                 });
             } else {
-                response = await axios.post("http://localhost:5000/api/portfolio/add-experience", values);
+                response = await axios.post("https://mern-portfolio-api-hazel.vercel.app/api/portfolio/add-experience", values);
             }
             dispatch(HideLoading());
             if (response.data.success) {
@@ -42,7 +42,7 @@ function AdminExperiences() {
     const onDelete = async (item) => {
         try {
             dispatch(ShowLoading());
-            const response = await axios.post("http://localhost:5000/api/portfolio/delete-experience", {
+            const response = await axios.post("https://mern-portfolio-api-hazel.vercel.app/api/portfolio/delete-experience", {
                 _id: item._id,
             });
             dispatch(HideLoading());
