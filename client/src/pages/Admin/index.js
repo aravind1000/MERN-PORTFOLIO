@@ -7,6 +7,7 @@ import Experience from './AdminExperiences';
 import Project from './AdminProjects';
 import Contact from './AdminContact';
 import { useSelector } from 'react-redux';
+import Certifications from './AdminCertifications';
 
 
 const { TabPane } = Tabs;
@@ -23,7 +24,7 @@ function Admin() {
   return (
     <div>
       <Header />
-      <div className='flex gap-10 items-center px-5 py-2 justify-between'>
+      <div className='fade-slide-up flex gap-10 items-center px-5 py-2 justify-between'>
         <div className='flex gap-10 items-center'>
           <h1 className='text-3xl text-primary'>Portfolio Admin</h1>
         </div>
@@ -33,7 +34,7 @@ function Admin() {
             window.location.href = "/admin-login"
           }}>Logout</h1>
       </div>
-      {portfolioData && <div className='mt-5 p-5'>
+      {portfolioData && <div className='fade-slide-up mt-5 p-5'>
         <Tabs defaultActiveKey='1'>
           <TabPane tab="Intro" key="1">
             <AdminIntro />
@@ -47,7 +48,10 @@ function Admin() {
           <TabPane tab="Projects" key="4">
             <Project />
           </TabPane>
-          <TabPane tab="Contact" key="5">
+          <TabPane tab="Certifications" key="5">
+            <Certifications />
+          </TabPane>
+          <TabPane tab="Contact" key="6">
             <Contact />
           </TabPane>
         </Tabs>

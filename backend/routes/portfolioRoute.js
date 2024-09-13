@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const nodemailer = require('nodemailer');
-const { Intro, About, Project, Contact, Experience, ContactForm } = require('../models/portfolioModel');
+const { Intro, About, Project, Contact, Experience, Certification, ContactForm } = require('../models/portfolioModel');
 const User = require('../models/userModel');
 
 // Configure Nodemailer
@@ -20,6 +20,7 @@ router.get('/get-portfolio-data', async (req, res) => {
         const projects = await Project.find();
         const contacts = await Contact.find();
         const experiences = await Experience.find();
+        const certifications = await Certification.find(); 
 
         res.status(200).send({
             intro: intros[0],
@@ -27,6 +28,7 @@ router.get('/get-portfolio-data', async (req, res) => {
             projects: projects,
             contact: contacts[0],
             experiences: experiences,
+            certifications: certifications
         });
     } catch (error) {
         res.status(500).send(error);
@@ -116,6 +118,53 @@ router.post('/delete-experience', async (req, res) => {
     }
 });
 
+// Add certification
+router.post('/add-certificate', async (req, res) => {
+    try {
+        const certification = new Certification(req.body); 
+        await certification.save();
+        res.status(200).send({
+            data: certification,
+            success: true,
+            message: "Certification added successfully"
+        });
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+// Update certification
+router.put('/update-certificate', async (req, res) => {
+    try {
+        const certification = await Certification.findOneAndUpdate( 
+            { _id: req.body._id },
+            req.body,
+            { new: true }
+        );
+        res.status(200).send({
+            data: certification,
+            success: true,
+            message: "Certification updated successfully"
+        });
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+// Delete certification
+router.post('/delete-certificate', async (req, res) => {
+    try {
+        const certification = await Certification.findOneAndDelete({ _id: req.body._id });
+        res.status(200).send({
+            data: certification,
+            success: true,
+            message: "Certification deleted successfully"
+        });
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
 // Add project
 router.post('/add-project', async (req, res) => {
     try {
@@ -196,14 +245,6 @@ router.post('/submit-contact', async (req, res) => {
             text: `You have received a new message from your portfolio website.\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`
         };
 
-        const transporter = nodemailer.createTransport({
-            service: 'Gmail',
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS,
-            },
-        });
-
         await transporter.sendMail(mailOptions);
 
         res.status(200).send({
@@ -221,7 +262,7 @@ router.post('/submit-contact', async (req, res) => {
     }
 });
 
-//admin login
+// Admin login
 router.post('/admin-login', async (req, res) => {
     try {
         const user = await User.findOne({ username: req.body.username, password: req.body.password });
@@ -235,4 +276,5 @@ router.post('/admin-login', async (req, res) => {
         res.status(500).send(error);
     }
 });
+
 module.exports = router;

@@ -4,6 +4,7 @@ import Intro from './Intro';
 import About from './About';
 import Experiences from './Experiences';
 import Projects from './Projects';
+import Certifications from './Certifications';
 import Contact from './Contact';
 import Footer from './Footer';
 import LeftSider from './LeftSider';
@@ -23,13 +24,14 @@ function Home() {
           <About />
           <Experiences />
           <Projects />
+          <Certifications/>
           <Contact />
-          <Footer />
           <LeftSider />
           <SideMover />
           <div className="sm:block hidden">
             <SideMenu />
           </div>
+          <Footer />
         </div>
       )}
     </div>

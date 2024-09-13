@@ -15,7 +15,7 @@ function Intro() {
   };
 
   return (
-    <div className='h-[80vh] bg-primary flex flex-col items-start justify-center gap-8 py-10' id='intro'>
+    <div className='fade-slide-up h-[80vh] bg-primary flex flex-col items-start justify-center gap-8 py-10' id='intro'>
       <h1 className='text-gray-500'>{welcomeText || ''}</h1>
       <h1 className='text-7xl sm:text-3xl text-secondary font-semibold'>{firstName || ''} {lastName || ''}</h1>
       <h1 className='text-7xl sm:text-3xl text-gray-500 font-semibold'>{caption || ''}</h1>

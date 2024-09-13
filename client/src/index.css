@@ -8,13 +8,16 @@
     font-family: "Montserrat", sans-serif;
 }
 
+html {
+    scroll-behavior: smooth; /* Smooth scrolling */
+}
+
 .header h1 {
     margin: 0 !important;
     padding: 0 !important;
 }
 
-/* scroll bar */
-
+/* Scroll bar styles */
 ::-webkit-scrollbar {
     width: 6px;
 }
@@ -34,11 +37,9 @@ i {
 
 i:hover {
     color: black;
-
 }
 
-/* loader */
-
+/* Loader animations */
 .f {
     animation: f 1s infinite;
 }
@@ -47,11 +48,9 @@ i:hover {
     0% {
         opacity: 1;
     }
-
     50% {
         opacity: 0.5;
     }
-
     100% {
         opacity: 0.5;
     }
@@ -65,11 +64,9 @@ i:hover {
     0% {
         opacity: 0.5;
     }
-
     50% {
         opacity: 1;
     }
-
     100% {
         opacity: 0.5;
     }
@@ -83,18 +80,15 @@ i:hover {
     0% {
         opacity: 0.5;
     }
-
     50% {
         opacity: 0.5;
     }
-
     100% {
         opacity: 1;
     }
 }
 
-/* input */
-
+/* Input and textarea styles */
 input,
 textarea {
     height: 40px;
@@ -112,3 +106,26 @@ textarea {
     height: 100px;
     padding-top: 10px;
 }
+
+/* Fade and slide up animation */
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-slide-up {
+    animation: fadeSlideUp 0.8s ease forwards;
+}
+
+
+
+
+
+
+

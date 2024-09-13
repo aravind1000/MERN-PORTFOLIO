@@ -1,7 +1,4 @@
-const { Certificate } = require("crypto");
-const { MongoOIDCError } = require("mongodb");
 const mongoose = require("mongoose");
-const { title } = require("process");
 
 const introSchema = new mongoose.Schema({
     welcomeText: {
@@ -91,6 +88,21 @@ const projectsSchema = new mongoose.Schema({
     }
 });
 
+const certificationsSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
+    image: {
+        type: String,
+        required: true,
+    }
+});
+
 const contactSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -142,6 +154,7 @@ module.exports = {
     About: mongoose.model("abouts", aboutSchema),
     Experience: mongoose.model("experiences", experienceSchema),
     Project: mongoose.model("projects", projectsSchema),
+    Certification: mongoose.model("certifications", certificationsSchema), 
     Contact: mongoose.model("contacts", contactSchema),
     ContactForm: mongoose.model("contactforms", contactFormSchema),
 };

@@ -75,7 +75,16 @@ function SideMenu() {
                                 onClick={(e) => handleSmoothScroll(e, 'projects')}
                                 className="text-2xl text-gray-700"
                             >
-                                Projects
+                                Project
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#certificates"
+                                onClick={(e) => handleSmoothScroll(e, 'certificates')}
+                                className="text-2xl text-gray-700"
+                            >
+                                Certification
                             </a>
                         </li>
                         <li>

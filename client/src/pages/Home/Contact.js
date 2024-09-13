@@ -54,14 +54,18 @@ function Contact() {
             <div className='flex flex-row sm:flex-col items-center justify-between'>
                 <div className='flex flex-col gap-1'>
                     <p className='text-tertiary'>{"{"}</p>
-                    {contact && Object.keys(contact).map((key) => (
-                        <p key={key} className='ml-5'>
-                            <span className='text-tertiary'>{key} :</span>
-                            <span className='text-tertiary'> {contact[key]}</span>
-                        </p>
-                    ))}
+                    {contact && Object.keys(contact)
+                        .filter((key) => key !== '_id')
+                        .map((key) => (
+                            <p key={key} className='ml-5'>
+                                <span className='text-tertiary'>{key} :</span>
+                                <span className='text-tertiary'> {contact[key]}</span>
+                            </p>
+                        ))
+                    }
                     <p className='text-tertiary'>{"}"}</p>
                 </div>
+
                 <div className='flex flex-col items-center w-full sm:w-full md:w-2/3 lg:w-1/2 bg-primary p-6 sm:p-8'>
                     <form onSubmit={handleSubmit} className='w-full flex flex-col gap-4 sm:gap-6'>
                         <input
@@ -92,7 +96,7 @@ function Contact() {
                         />
                         <button
                             type="submit"
-                            className='bg-secondary text-white py-2 sm:py-3 px-4 sm:px-6 rounded-lg text-base sm:text-lg font-semibold hover:bg-secondary-dark'
+                            className='flex items-center justify-center gap-2 border-2 border-tertiary text-tertiary px-6 py-3 rounded'
                             disabled={loading}
                         >
                             {loading ? 'Sending...' : 'Send Message'}

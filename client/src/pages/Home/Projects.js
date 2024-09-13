@@ -45,11 +45,12 @@ function Projects() {
                                 href={projects[selectedItemIndex].link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className='flex items-center justify-center gap-2 bg-secondary text-white font-semibold py-2 px-4 rounded-md transition-colors duration-300'
+                                className='flex items-center justify-center gap-2 border-2 border-tertiary text-tertiary px-6 py-3 rounded'
                             >
                                 <i className="ri-github-fill text-xl"></i>
                                 <span>View on GitHub</span>
                             </a>
+
                         </div>
                     </div>
                 </div>

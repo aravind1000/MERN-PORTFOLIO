@@ -13,7 +13,7 @@ function Login() {
     const login = async () => {
         try {
             dispatch(ShowLoading());
-            const response = await axios.post('https://mern-portfolio-api-hazel.vercel.app/api/portfolio/admin-login', user);
+            const response = await axios.post('http://localhost:5000/api/portfolio/admin-login', user);
             dispatch(HideLoading());
             if (response.data.success) {
                 message.success(response.data.message);
@@ -28,7 +28,7 @@ function Login() {
         }
     }
     return (
-        <div className='flex justify-center items-center h-screen bg-tertiary'>
+        <div className='fade-slide-up flex justify-center items-center h-screen bg-tertiary'>
             <div className='w-96 flex gap-5 p-5 shadow border-gray-500 flex-col bg-white'>
                 <h1 className='text-2xl'>Portfolio - Admin Login</h1>
                 <input type="text" value={user.username} onChange={(e) => setUser({ ...user, username: e.target.value })} placeholder='Username' />
