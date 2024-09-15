@@ -11,7 +11,7 @@ const link = {
 
 function LeftSider() {
     return (
-        <div className='fixed left-0 bottom-0 px-10 sm:static'>
+        <div className='fade-slide-up fixed left-0 bottom-0 px-10 sm:static'>
             <div className='flex flex-col items-center'>
                 <div className='flex flex-col gap-3 sm:flex-row'>
                     <a href={link.github} target="_blank" rel="noopener noreferrer">
