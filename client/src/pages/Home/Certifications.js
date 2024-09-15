@@ -12,7 +12,6 @@ function Certifications() {
         <div id='certificates'>
             <SectionTitle title="Certifications" />
             <div className='flex py-10 gap-20 sm:flex-col'>
-                {/* Sidebar for certification titles */}
                 <div className='flex flex-col gap-10 border-l-2 border-[#135e4c82] w-1/3 sm:flex-row sm:overflow-x-scroll sm:w-full'>
                     {certifications.map((certification, index) => (
                         <div
@@ -32,14 +31,13 @@ function Certifications() {
                     ))}
                 </div>
 
-                {/* Content for the selected certification */}
                 <div className='flex items-center justify-center gap-10 sm:flex-col'>
                     <img
                         draggable="false"
                         src={certifications[selectedItemIndex]?.image}
                         alt={certifications[selectedItemIndex]?.title}
                         aria-label={`Certification image for ${certifications[selectedItemIndex]?.title}`}
-                        className='h-80 w-80 object-cover rounded-lg shadow-lg'
+                        className='max-h-80 max-w-full object-contain rounded-lg shadow-lg sm:max-h-60 sm:w-full'
                     />
                     <div className='flex flex-col gap-5'>
                         <h1 className='text-secondary text-xl font-semibold'>
