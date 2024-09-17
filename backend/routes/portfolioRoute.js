@@ -20,7 +20,7 @@ router.get('/get-portfolio-data', async (req, res) => {
         const projects = await Project.find();
         const contacts = await Contact.find();
         const experiences = await Experience.find();
-        const certifications = await Certification.find(); 
+        const certifications = await Certification.find();
 
         res.status(200).send({
             intro: intros[0],
@@ -121,7 +121,7 @@ router.post('/delete-experience', async (req, res) => {
 // Add certification
 router.post('/add-certificate', async (req, res) => {
     try {
-        const certification = new Certification(req.body); 
+        const certification = new Certification(req.body);
         await certification.save();
         res.status(200).send({
             data: certification,
@@ -136,7 +136,7 @@ router.post('/add-certificate', async (req, res) => {
 // Update certification
 router.put('/update-certificate', async (req, res) => {
     try {
-        const certification = await Certification.findOneAndUpdate( 
+        const certification = await Certification.findOneAndUpdate(
             { _id: req.body._id },
             req.body,
             { new: true }

@@ -154,7 +154,7 @@ module.exports = {
     About: mongoose.model("abouts", aboutSchema),
     Experience: mongoose.model("experiences", experienceSchema),
     Project: mongoose.model("projects", projectsSchema),
-    Certification: mongoose.model("certifications", certificationsSchema), 
+    Certification: mongoose.model("certifications", certificationsSchema),
     Contact: mongoose.model("contacts", contactSchema),
     ContactForm: mongoose.model("contactforms", contactFormSchema),
 };
