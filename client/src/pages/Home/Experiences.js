@@ -12,7 +12,7 @@ function Experiences() {
 
     return (
         <div id='experience' className={`h-screen sm:h-auto flex flex-col justify-center ${darkMode ? 'bg-darkBg' : 'bg-white'}`}>
-            <SectionTitle title="Experience" />
+            <SectionTitle title="experience" />
             <div className={`flex py-10 gap-20 ${darkMode ? 'bg-darkBg' : ''} sm:flex-col`}>
                 <div className={`flex flex-col gap-10 border-l-2 ${darkMode ? 'border-gray-600' : 'border-[#135e4c82]'} w-1/3 sm:flex-row sm:overflow-x-scroll sm:w-full`}>
                     {experiences.map((experience, index) => (
@@ -46,3 +46,4 @@ function Experiences() {
 }
 
 export default Experiences;
+
