@@ -12,7 +12,7 @@ function Projects() {
 
     return (
         <div id='projects' className={`h-screen sm:h-auto flex flex-col justify-center ${darkMode ? 'bg-darkBg' : 'bg-white'}`}>
-            <SectionTitle title="Projects" />
+            <SectionTitle title="projects" />
             <div className={`flex py-10 gap-20 ${darkMode ? 'text-gray-300' : 'text-gray-700'} sm:flex-col`} >
                 <div className={`flex flex-col gap-10 border-l-2 ${darkMode ? 'border-gray-600' : 'border-[#135e4c82]'} w-1/3 sm:flex-row sm:overflow-x-scroll sm:w-full`}>
                     {projects.map((project, index) => (
@@ -68,3 +68,4 @@ function Projects() {
 }
 
 export default Projects;
+
