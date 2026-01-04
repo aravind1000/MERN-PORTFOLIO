@@ -25,16 +25,17 @@ function Header() {
       </div>
 
       <nav className="flex space-x-6 sm:hidden">
-        <a href="#about" className="text-lg text-gray-800 dark:text-gray-200 hover:text-secondary dark:hover:text-secondary transition-colors duration-300">About</a>
-        <a href="#experience" className="text-lg text-gray-800 dark:text-gray-200 hover:text-secondary dark:hover:text-secondary transition-colors duration-300">Experience</a>
-        <a href="#projects" className="text-lg text-gray-800 dark:text-gray-200 hover:text-secondary dark:hover:text-secondary transition-colors duration-300">Projects</a>
-        <a href="#certificates" className="text-lg text-gray-800 dark:text-gray-200 hover:text-secondary dark:hover:text-secondary transition-colors duration-300">Certifications</a>
-        <a href="#contact" className="text-lg text-gray-800 dark:text-gray-200 hover:text-secondary dark:hover:text-secondary transition-colors duration-300">Contact</a>
+        <a href="#about" className="text-lg text-gray-800 dark:text-gray-200 hover:text-secondary dark:hover:text-secondary transition-colors duration-300">about</a>
+        <a href="#experience" className="text-lg text-gray-800 dark:text-gray-200 hover:text-secondary dark:hover:text-secondary transition-colors duration-300">experience</a>
+        <a href="#projects" className="text-lg text-gray-800 dark:text-gray-200 hover:text-secondary dark:hover:text-secondary transition-colors duration-300">projects</a>
+        <a href="#certificates" className="text-lg text-gray-800 dark:text-gray-200 hover:text-secondary dark:hover:text-secondary transition-colors duration-300">certifications & achievements</a>
+        <a href="#contact" className="text-lg text-gray-800 dark:text-gray-200 hover:text-secondary dark:hover:text-secondary transition-colors duration-300">contact</a>
       </nav>
     </header>
   );
 }
 
 export default Header;
+
 
 
