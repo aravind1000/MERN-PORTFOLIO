@@ -17,13 +17,12 @@ function Intro() {
       (entries) => {
         entries. forEach((entry) => {
           if (entry.isIntersecting) {
-            // Trigger animation when section comes into view
             setIsAnimating(true);
             animateName();
           }
         });
       },
-      { threshold: 0.5 } // Trigger when 50% of the section is visible
+      { threshold: 0.5 }
     );
 
     if (introRef.current) {
@@ -98,7 +97,7 @@ function Intro() {
           onClick={scrollToAbout}
           aria-label="Get Started"
         >
-          Get Started
+          ./start
         </button>
         {resume && (
           <a
@@ -107,7 +106,7 @@ function Intro() {
             className='border-2 border-tertiary text-tertiary px-3 py-3 rounded flex items-center gap-2'
             aria-label="Download Resume"
           >
-            Resume
+            wget resume.pdf
           </a>
         )}
       </div>
@@ -116,3 +115,4 @@ function Intro() {
 }
 
 export default Intro;
+
