@@ -9,7 +9,7 @@ function Header() {
     <header className="sticky top-0 z-50 flex justify-between items-center p-4 bg-white dark:bg-darkBg transition-colors duration-300">
       <div className="flex items-center space-x-2">
         <h1 className="text-secondary text-3xl font-medium cursor-pointer">
-          {"<"}@hackyarav{"/>"}
+          {"<"}hackyarav{"/>"}
         </h1>
         <button
           onClick={toggleDarkMode}
@@ -36,4 +36,5 @@ function Header() {
 }
 
 export default Header;
+
 
