@@ -44,7 +44,7 @@ function Contact() {
 
     return (
         <div id='contact' className={`h-screen sm:h-auto ${darkMode ? 'bg-darkBg text-gray-300' : 'text-gray-700'}`}>
-            <SectionTitle title="Let's Chat" />
+            <SectionTitle title="let's chat" />
             <div className='flex flex-row sm:flex-col sm:space-y-6 items-center justify-between h-full'>
                 <div className='flex flex-col gap-2'>
                     <p className='text-tertiary'>{"{"}</p>
@@ -111,3 +111,4 @@ function Contact() {
 }
 
 export default Contact;
+
