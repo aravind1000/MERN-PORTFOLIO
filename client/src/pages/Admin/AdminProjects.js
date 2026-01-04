@@ -127,7 +127,6 @@ function AdminProjects() {
                         <Form.Item
                             name="image"
                             label="Image URL"
-                            rules={[{message: 'Please enter the image URL' }]}
                         >
                             <Input placeholder="Image URL" />
                         </Form.Item>
@@ -180,3 +179,4 @@ function AdminProjects() {
 
 
 export default AdminProjects;
+
