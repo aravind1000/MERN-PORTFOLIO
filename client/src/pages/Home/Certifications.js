@@ -35,7 +35,7 @@ function Certifications() {
 
     return (
         <div id="certificates" className="h-screen sm:h-auto relative px-4 py-12">
-            <SectionTitle title="Certifications" />
+            <SectionTitle title="certifications & achievements" />
 
             <div className={`relative flex items-center justify-between py-8 ${darkMode ? 'bg-darkBg' : 'bg-primary'} rounded-lg overflow-hidden`}>
                 
@@ -112,3 +112,4 @@ function Certifications() {
 }
 
 export default Certifications;
+
