@@ -12,7 +12,7 @@ function About() {
 
     return (
         <div id='about' className={`h-screen sm:h-auto flex flex-col justify-center ${darkMode ? 'bg-darkBg' : 'bg-white'}`}>
-            <SectionTitle title="About" />
+            <SectionTitle title="about" />
             <div className={`flex flex-row sm:flex-col md:flex-row w-full items-center gap-6 sm:gap-8 md:gap-16 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                 <div className='w-full sm:w-full md:w-1/2 flex justify-center'>
                     <div className='flex justify-center'>
@@ -56,3 +56,4 @@ function About() {
 }
 
 export default About;
+
