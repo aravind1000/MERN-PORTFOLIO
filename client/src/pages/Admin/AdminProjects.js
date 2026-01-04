@@ -127,7 +127,7 @@ function AdminProjects() {
                         <Form.Item
                             name="image"
                             label="Image URL"
-                            rules={[{ required: true, message: 'Please enter the image URL' }]}
+                            rules={[{message: 'Please enter the image URL' }]}
                         >
                             <Input placeholder="Image URL" />
                         </Form.Item>
@@ -177,5 +177,6 @@ function AdminProjects() {
         </div>
     );
 }
+
 
 export default AdminProjects;
