@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { DarkModeContext } from '../../contexts/DarkModeContext';
 
@@ -9,9 +9,35 @@ function Intro() {
   const { darkMode } = useContext(DarkModeContext);
   
   const [displayName, setDisplayName] = useState('');
-  const [isAnimating, setIsAnimating] = useState(true);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const introRef = useRef(null);
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries. forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Trigger animation when section comes into view
+            setIsAnimating(true);
+            animateName();
+          }
+        });
+      },
+      { threshold: 0.5 } // Trigger when 50% of the section is visible
+    );
+
+    if (introRef.current) {
+      observer.observe(introRef. current);
+    }
+
+    return () => {
+      if (introRef.current) {
+        observer.unobserve(introRef.current);
+      }
+    };
+  }, [firstName, lastName]);
+
+  const animateName = () => {
     const fullName = `${firstName} ${lastName}`;
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*';
     let iterations = 0;
@@ -39,12 +65,10 @@ function Intro() {
         setIsAnimating(false);
       }
     }, 50);
-
-    return () => clearInterval(interval);
-  }, [firstName, lastName]);
+  };
 
   const scrollToAbout = () => {
-    const aboutSection = document.getElementById('about');
+    const aboutSection = document. getElementById('about');
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: 'smooth' });
     }
@@ -52,19 +76,20 @@ function Intro() {
 
   return (
     <div
-      className={`fade-slide-up h-screen w-full flex flex-col items-start justify-center gap-7 sm:w-full ${darkMode ?  'bg-darkBg' : 'bg-primary'}`}
+      ref={introRef}
+      className={`fade-slide-up h-screen w-full flex flex-col items-start justify-center gap-7 sm:w-full ${darkMode ? 'bg-darkBg' : 'bg-primary'}`}
     >
       <h1 className={`${darkMode ? 'text-gray-300' : 'text-gray-500'}`}>{welcomeText}</h1>
       <h1 
-        className={`text-7xl sm:text-3xl text-secondary font-semibold ${isAnimating ? 'tracking-wider' : ''}`}
+        className={`text-7xl sm:text-3xl text-secondary font-semibold ${isAnimating ? 'tracking-wider' :  ''}`}
         style={{ fontFamily: 'monospace' }}
       >
         {displayName}
       </h1>
-      <h1 className={`${darkMode ? 'text-gray-300' :  'text-gray-500'} text-7xl sm:w-full sm:text-2xl font-semibold`}>
+      <h1 className={`${darkMode ? 'text-gray-300' : 'text-gray-500'} text-7xl sm:w-full sm:text-2xl font-semibold`}>
         {caption}
       </h1>
-      <p className={`w-2/3 text-justify sm:w-full sm:text-justify ${darkMode ?  'text-gray-300' : 'text-gray-500'}`}>
+      <p className={`w-2/3 text-justify sm:w-full sm:text-justify ${darkMode ? 'text-gray-300' : 'text-gray-500'}`}>
         {description}
       </p>
       <div className='flex gap-5'>
