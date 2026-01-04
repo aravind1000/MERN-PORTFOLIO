@@ -4,7 +4,6 @@ import { DarkModeContext } from '../../contexts/DarkModeContext';
 const links = {
     github: "https://github.com/aravind1000",
     linkedin: "https://www.linkedin.com/in/aravind-a-48a387201/",
-    coding: "https://leetcode.com/u/aravind30052003/",
     mail: "mailto:aravind30052003@gmail.com",
     twitter: "https://x.com/aravind_a___",
     instagram: "https://www.instagram.com/aravind_a___/",
@@ -23,9 +22,6 @@ function LeftSider() {
                     <a href={links.linkedin} target="_blank" rel="noopener noreferrer">
                         <i className={`ri-linkedin-box-fill text-${darkMode ? 'white' : 'gray-600'} text-2xl`}></i>
                     </a>
-                    <a href={links.coding} target="_blank" rel="noopener noreferrer">
-                        <i className={`ri-code-s-slash-line text-${darkMode ? 'white' : 'gray-600'} text-2xl`}></i>
-                    </a>
                     <a href={links.mail} target="_blank" rel="noopener noreferrer">
                         <i className={`ri-mail-line text-${darkMode ? 'white' : 'gray-600'} text-2xl`}></i>
                     </a>
@@ -41,5 +37,6 @@ function LeftSider() {
         </div>
     );
 }
+
 
 export default LeftSider;
