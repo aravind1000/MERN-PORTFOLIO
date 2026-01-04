@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { DarkModeContext } from '../../contexts/DarkModeContext';
 
@@ -7,6 +7,41 @@ function Intro() {
   const { intro } = portfolioData;
   const { firstName = 'First', lastName = 'Last', welcomeText = '', description = '', caption = '', resume } = intro;
   const { darkMode } = useContext(DarkModeContext);
+  
+  const [displayName, setDisplayName] = useState('');
+  const [isAnimating, setIsAnimating] = useState(true);
+
+  useEffect(() => {
+    const fullName = `${firstName} ${lastName}`;
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*';
+    let iterations = 0;
+    const maxIterations = fullName.length;
+
+    const interval = setInterval(() => {
+      setDisplayName(
+        fullName
+          .split('')
+          .map((char, index) => {
+            if (char === ' ') return ' ';
+            if (index < iterations) {
+              return fullName[index];
+            }
+            return characters[Math.floor(Math.random() * characters.length)];
+          })
+          .join('')
+      );
+
+      iterations += 1 / 3;
+
+      if (iterations >= maxIterations) {
+        clearInterval(interval);
+        setDisplayName(fullName);
+        setIsAnimating(false);
+      }
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, [firstName, lastName]);
 
   const scrollToAbout = () => {
     const aboutSection = document.getElementById('about');
@@ -17,16 +52,19 @@ function Intro() {
 
   return (
     <div
-      className={`fade-slide-up h-screen w-full flex flex-col items-start justify-center gap-7 sm:w-full ${darkMode ? 'bg-darkBg' : 'bg-primary'}`}
+      className={`fade-slide-up h-screen w-full flex flex-col items-start justify-center gap-7 sm:w-full ${darkMode ?  'bg-darkBg' : 'bg-primary'}`}
     >
       <h1 className={`${darkMode ? 'text-gray-300' : 'text-gray-500'}`}>{welcomeText}</h1>
-      <h1 className={`text-7xl sm:text-3xl text-secondary font-semibold`}>
-        {firstName} {lastName}
+      <h1 
+        className={`text-7xl sm:text-3xl text-secondary font-semibold ${isAnimating ? 'tracking-wider' : ''}`}
+        style={{ fontFamily: 'monospace' }}
+      >
+        {displayName}
       </h1>
-      <h1 className={`${darkMode ? 'text-gray-300' : 'text-gray-500'} text-7xl sm:w-full sm:text-2xl font-semibold`}>
+      <h1 className={`${darkMode ? 'text-gray-300' :  'text-gray-500'} text-7xl sm:w-full sm:text-2xl font-semibold`}>
         {caption}
       </h1>
-      <p className={`w-2/3 text-justify sm:w-full sm:text-justify ${darkMode ? 'text-gray-300' : 'text-gray-500'}`}>
+      <p className={`w-2/3 text-justify sm:w-full sm:text-justify ${darkMode ?  'text-gray-300' : 'text-gray-500'}`}>
         {description}
       </p>
       <div className='flex gap-5'>
