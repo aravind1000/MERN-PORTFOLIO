@@ -25,7 +25,7 @@ function Admin() {
     <div>
       <div className='fade-slide-up flex gap-10 items-center px-5 py-2 justify-between'>
         <div className='flex gap-10 items-center'>
-          <h1 className='text-3xl text-primary'>Welcome back, Aravind Ji ! Let’s make your portfolio shine !</h1>
+          <h1 className='text-3xl text-primary'>Hello, hackyarav 👋</h1>
         </div>
         <h1 className='underline text-primary text-xl cursor-pointer' onClick={
           () => {
@@ -60,5 +60,6 @@ function Admin() {
     </div>
   )
 };
+
 
 export default Admin
