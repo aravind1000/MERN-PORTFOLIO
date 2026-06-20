@@ -74,8 +74,4 @@ To run this project locally, follow these steps:
 1. **Admin Panel:** Log in to the admin panel using your credentials to manage the portfolio content. You can add, update, and delete projects and skills.
 2. **User Interface:** The website displays the portfolio dynamically with the latest updates from the admin panel.
 
-## Contact
-
-For any inquiries or issues, please contact [aravind30052003@gmail.com](mailto:aravind30052003@gmail.com).
-
 ---
